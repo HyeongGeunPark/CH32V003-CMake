@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name":"OpenOCD debug",
+            "name":"OpenOCD build, flash and debug",
             "type":"cppdbg",
             "request": "launch",
             "cwd":".",
@@ -16,6 +16,7 @@
             "serverStarted": "Listening",
             "filterStderr": true,
             "filterStdout": false,
+            "preLaunchTask": "build and flash",
             "setupCommands": [
             ],
             "miDebuggerPath": "${config:GDB2}",

@@ -8,11 +8,16 @@
     },
     "tasks": [
         {
+            "type": "shell",
+            "label": "build and flash",
+            "dependsOn" : ["CMake: build", "flash"],
+            "dependsOrder": "sequence"
+        },
+        {
             "type":"shell",
             "label":"flash",
             "command":"${config:OPENOCD} -f ${config:WCH_CFG} -c init -c halt -c 'flash write_image ${config:HEX}' -c reset -c wlink_reset_resume -c exit",
             "problemMatcher":[],
-            "dependsOn": ["kill"],
             "detail":"Flash the MCU using openOCD on WLinkE"
         },
         {
@@ -27,7 +32,6 @@
             "type":"shell",
             "label":"debug",
             "command":"${config:OPENOCD} -f ${config:WCH_CFG} -c init -c halt",
-            "dependsOn": ["kill"],
             "problemMatcher":[],
             "detail":"Runs the gdbserver on openOCD"
         },

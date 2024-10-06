@@ -57,5 +57,6 @@ int main(void)
         Delay_Ms(1000);
         //GPIO_WriteBit(GPIOD, GPIO_Pin_0, (i == 0) ? (i = Bit_SET) : (i = Bit_RESET));
         printf("hello world!\n");
+        printf("this is really good...\n");
     }
 }
