@@ -1,0 +1,33 @@
+{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 기존 특성에 대한 설명을 보려면 가리킵니다.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name":"OpenOCD debug",
+            "type":"cppdbg",
+            "request": "launch",
+            "cwd":".",
+            "program":"${config:ELF}",
+            "MIMode": "gdb",
+            "debugServerPath": "${config:OPENOCD}",
+            "debugServerArgs": "-f ${config:WCH_CFG} -c init -c \"reset init\"",
+            "serverStarted": "Listening",
+            "filterStderr": true,
+            "filterStdout": false,
+            "setupCommands": [
+            ],
+            "miDebuggerPath": "${config:GDB2}",
+            "useExtendedRemote": true,
+            "miDebuggerServerAddress": "localhost:3333",
+            "logging":{
+                "moduleLoad": true,
+                "trace": true,
+                "engineLogging": true,
+                "programOutput": true,
+                "exceptions": false
+            }
+        }
+    ]
+}

@@ -4,7 +4,8 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 cmake_minimum_required(VERSION 3.20)
 
 # 工具链设置
-set(TOOLPATH D:/0wch/toolchain/RISCVEmbeddedGCC/bin/riscv-none-embed-)
+# set this path to your toolchain directory
+set(TOOLPATH C:/MounRiver/MRS_Community/toolchain/RISC-V\ Embedded\ GCC12/bin/riscv-none-elf-)
 
 if (WIN32)
 	MESSAGE(STATUS "Now is windows!")
@@ -29,9 +30,10 @@ else ()
 endif ()
 
 # 项目设置
+# project name and language standard settings
 project(ch32v003-ninja C CXX ASM)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_C_STANDARD 17)
 
 # 编译参数 一般不用改
 add_compile_options(-march=rv32ec -mabi=ilp32e -msmall-data-limit=0 -msave-restore)
@@ -42,7 +44,8 @@ add_link_options(-T ${CMAKE_SOURCE_DIR}/Ld/Link.ld)
 add_link_options(-march=rv32ec -mabi=ilp32e -nostartfiles -Xlinker --gc-sections -Wl,--print-memory-usage -Wl,-Map,${PROJECT_NAME}.map --specs=nano.specs --specs=nosys.specs)
 
 # 编译等级
-add_compile_options(-O2)
+#add_compile_options(-O2)
+add_compile_options(-g)
 
 # 编译信息等级
 add_compile_options(-Wall)

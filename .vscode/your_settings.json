@@ -1,0 +1,8 @@
+{
+    "PROJECT_NAME":"[your project name here, which is defined in CMakeLists.txt]",
+    "TOOLCHAIN": "[your toolchain path here], default value is C:/MounRiver/MRS_Community/toolchain]",
+    "OPENOCD_DIR": "${config:TOOLCHAIN}/OpenOCD",
+    "WCH_CFG":"${config:OPENOCD_DIR}/bin/wch-riscv.cfg",
+    "OPENOCD": "${config:OPENOCD_DIR}/bin/openocd.exe",
+    "HEX": "[your workspace directory here(with forward slashes)]/build/${config:PROJECT_NAME}.hex"
+}

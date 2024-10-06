@@ -1,0 +1,75 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "options": {
+        "env":{
+        }
+    },
+    "tasks": [
+        {
+            "type":"shell",
+            "label":"flash",
+            "command":"${config:OPENOCD} -f ${config:WCH_CFG} -c init -c halt -c 'flash write_image ${config:HEX}' -c reset -c wlink_reset_resume -c exit",
+            "problemMatcher":[],
+            "dependsOn": ["kill"],
+            "detail":"Flash the MCU using openOCD on WLinkE"
+        },
+        {
+            "type":"shell",
+            "label":"reset",
+            "command":"${config:OPENOCD} -f ${config:WCH_CFG} -c init -c halt -c wlink_reset_resume -c exit",
+            "problemMatcher":[],
+            "dependsOn":["kill"],
+            "detail":"Resets the MCU"
+        },
+        {
+            "type":"shell",
+            "label":"debug",
+            "command":"${config:OPENOCD} -f ${config:WCH_CFG} -c init -c halt",
+            "dependsOn": ["kill"],
+            "problemMatcher":[],
+            "detail":"Runs the gdbserver on openOCD"
+        },
+        {
+            "type":"shell",
+            "label":"kill",
+            "command":"Stop-Process -Name openocd*",
+            "problemMatcher":[],
+            "detail":"kills running openocd process",
+            "hide":true
+        },
+        {
+            "type": "shell",
+            "label": "clean build",
+            "group": "build",
+            "problemMatcher":[],
+            "dependsOn":["CMake: clean", "CMake: configure", "CMake: build"],
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "CMake: build",
+            "command": "cmake --build build",
+            "group":"build",
+            "problemMatcher": [],
+            "detail": "CMake template build task"
+        },
+        {
+            "type": "shell",
+            "label": "CMake: clean",
+            "command": "(Remove-Item build -recurse) -or (echo \"already clean\")",
+            "group":"build",
+            "problemMatcher": [],
+            "detail": "CMake template clean task"
+        },
+        {
+            "type": "shell",
+            "label": "CMake: configure",
+            "command": "cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -B build",
+            "group":"build",
+            "problemMatcher": [],
+            "detail": "CMake template configure task"
+        }
+    ]
+}
