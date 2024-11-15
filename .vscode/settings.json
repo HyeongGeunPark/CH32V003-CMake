@@ -1,0 +1,11 @@
+{
+    "PROJECT_NAME":"ch32v003-cmake",
+    "TOOLCHAIN": "C:/MounRiver/MRS_Community/toolchain",
+    "OPENOCD_DIR": "${config:TOOLCHAIN}/OpenOCD",
+    "WCH_CFG":"${config:OPENOCD_DIR}/bin/wch-riscv.cfg",
+    "OPENOCD": "${config:OPENOCD_DIR}/bin/openocd.exe",
+    "HEX": "C:/Users/hgp51/Documents/git/CH32V003-CMake/build/${config:PROJECT_NAME}.hex",
+    "ELF": "C:/Users/hgp51/Documents/git/CH32V003-CMake/build/${config:PROJECT_NAME}.elf",
+    "GCC": "${config:TOOLCHAIN}/RISC-V Embedded GCC12",
+    "GDB": "${config:GCC}/bin/riscv-none-elf-gdb.exe"
+}

@@ -1,3 +1,31 @@
+# CH32V003 template for vscode (on windows)
+
+## Requirements
+- vscode extensions
+    - [Peripheral Viewer](https://marketplace.visualstudio.com/items?itemName=mcu-debug.peripheral-viewer)
+- ToolChain from MounRiver Studio (or MRS Community)
+
+## Detail
+- This template uses vscode's tasks.json file to run various commands.
+    - Since cmake-tools currently does not support gdbserver connection, there is no choice.
+- Read tasks.json to see what happens inside
+
+## How to use
+- Specify your environment in these files
+    - /.vscode/settings.json
+        - These variables are used in tasks.json
+        - read your_settings.json for more information
+    - /CMakeLists.txt
+        - set "TOOLPATH" to your toolchain directory
+- Press F5 to run debug
+- Other tasks are registered in tasks.json, so you can run those tasks with Ctrl+Shift+P -> tasks -> \[task name\]
+
+## Note
+- All tasks assumes that the default shell is PWSH.
+
+--------------------------------------------------------------
+README.md from original repository
+--------------------------------------------------------------
 # CH32V003-CMake
 
 摆脱eclipse编译环境，使用vscode编辑代码。

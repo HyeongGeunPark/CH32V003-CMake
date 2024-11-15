@@ -19,7 +19,7 @@
             "preLaunchTask": "build and flash",
             "setupCommands": [
             ],
-            "miDebuggerPath": "${config:GDB2}",
+            "miDebuggerPath": "${config:GDB}",
             "useExtendedRemote": true,
             "miDebuggerServerAddress": "localhost:3333",
             "logging":{
