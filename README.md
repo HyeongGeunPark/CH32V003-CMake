@@ -13,7 +13,7 @@
 ## How to use
 - Specify your environment in these files
     - /.vscode/settings.json
-        - These variables are used in tasks.json
+        - These variables are used in tasks.json and launch.json
         - read your_settings.json for more information
     - /CMakeLists.txt
         - set "TOOLPATH" to your toolchain directory
